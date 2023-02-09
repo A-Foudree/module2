@@ -1,4 +1,15 @@
 """
+Program: averag_scores edited for Input Validation with Try Assignment
+Author: Ashley Fry
+Last date modified: 02/08/23
+The purpose of this program assignment is to  update my average test scores code from a previous assignment with added
+input validation using try/except.
+Details:
+Update your previous assignment code to include try/except for each of the user inputs.
+If the user enters negative numbers or a string for their number inputs, the except path should print an error message.
+"""
+
+"""
 Program: average_scores.py
 Author: Ashley Fry
 Last date modified: 01/24/2023
@@ -21,7 +32,6 @@ Example output:
 Rodriguez, Linda age: 21 average grade: 92.50
 Add doctring to the top of your file, add comments at the bottom with observed output after a few manual
  test runs of your code.
-Submit your average_scores.py
 """
 
 def main():
@@ -29,10 +39,28 @@ def main():
     first_name = input("Enter First Name : ")
     age = int(input("Enter your age : "))
     num_scores = 3
-    score1 = int(input("Enter first score : "));
-    score2 = int(input("Enter second score: "));
-    score3 = int(input("Enter third score : "));
-    avg = (score1 + score2 + score3)/num_scores;
+
+    try:
+        score1 = int(input("Enter first score : "))
+        if (score1 <= 0 or score1 == str):
+            raise ValueError
+    except ValueError:
+        print("You did not enter a proper value")
+
+    try:
+        score2 = int(input("Enter second score: "))
+        if (score2 <= 0 or score2 == str):
+            raise ValueError
+    except ValueError:
+            print("You did not enter a proper value")
+    try:
+        score3 = int(input("Enter third score : "))
+        if (score3 <= 0 or score3 == str):
+            raise ValueError
+    except ValueError:
+            print("You did not enter a proper value")
+
+    avg = (score1 + score2 + score3)/num_scores
     print(last_name,",",first_name,"age:",age,"average grade:%.2f"%avg)
 
 if __name__ == "__main__":
